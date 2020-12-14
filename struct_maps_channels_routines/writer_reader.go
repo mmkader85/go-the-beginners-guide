@@ -17,7 +17,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	//io.Copy(os.Stdout, resp.Body)
+	// io.Copy(os.Stdout, resp.Body)
 	io.Copy(logWriter{}, resp.Body)
 }
 

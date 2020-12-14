@@ -18,23 +18,23 @@ func TestNewDeck(t *testing.T) {
 }
 
 func TestSaveToFileAndNewDeckFromFile(t *testing.T) {
-	testfile := "_testdeck.txt"
-	os.Remove(testfile)
+	testFile := "_testdeck.txt"
+	_ = os.Remove(testFile)
 
 	d := newDeck()
-	d.saveToFile(testfile)
+	_ = d.saveToFile(testFile)
 
-	_, err := os.Stat(testfile)
+	_, err := os.Stat(testFile)
 	if os.IsNotExist(err) {
 		t.Errorf("Unable to save deck to file. %v", err)
 	}
 
 	if err == nil {
-		nd := newDeckFromFile(testfile)
+		nd := newDeckFromFile(testFile)
 		if len(nd) != 24 {
 			t.Errorf("NewDeck failed from File failed. Expected a deck but got %v", nd)
 		}
 	}
 
-	os.Remove(testfile)
+	_ = os.Remove(testFile)
 }

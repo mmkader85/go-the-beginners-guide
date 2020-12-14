@@ -19,7 +19,7 @@ func newDeck() deck {
 
 	for _, suit := range cardSuites {
 		for _, value := range cardValues {
-			newDeck = append(newDeck, value + " of " + suit)
+			newDeck = append(newDeck, value+" of "+suit)
 		}
 	}
 
@@ -32,12 +32,8 @@ func (d deck) print() {
 	}
 }
 
-func deal(d deck, handSize int) (deck, deck) {
-	return d[:handSize], d[handSize:]
-}
-
 func (d deck) toString() string {
-	return strings.Join([]string(d), ",")
+	return strings.Join(d, ",")
 }
 
 func (d deck) saveToFile(filename string) error {
@@ -51,8 +47,8 @@ func newDeckFromFile(filename string) deck {
 		os.Exit(1)
 	}
 
-	deckString := string(bs) //Ace of Spades,Two of Spades,Three of Spades...
-	deckSlice := strings.Split(deckString, ",") //["Ace of Spades" "Two of Spades"]
+	deckString := string(bs)                    // Ace of Spades,Two of Spades,Three of Spades...
+	deckSlice := strings.Split(deckString, ",") // ["Ace of Spades" "Two of Spades"]
 
 	return deckSlice
 }

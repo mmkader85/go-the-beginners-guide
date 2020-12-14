@@ -20,11 +20,11 @@ func main() {
 		go checkWebLink(link, c)
 	}
 
-	//Infinite loop
-	//for {
+	// Infinite loop
+	// for {
 	//	// This will be called immediately once a value is received in channel
 	//	go checkWebLink(<-c, c)
-	//}
+	// }
 
 	for l := range c {
 		go func(link string) {
@@ -35,7 +35,7 @@ func main() {
 }
 
 func checkWebLink(l string, c chan string) {
-	//time.Sleep(5 * time.Second)
+	// time.Sleep(5 * time.Second)
 	_, err := http.Get(l)
 	if err != nil {
 		fmt.Println(l + " is down!")
